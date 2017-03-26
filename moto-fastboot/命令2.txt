@@ -1,0 +1,23 @@
+打开dos命令行 输入如下命令：
+cd \   (进入C盘)
+moto-fastboot devices  （显示连接设备）
+moto-fastboot erase recovery  （清除原来官方的recovery）
+moto-fastboot flash recovery recovery.img （recovery-xxxx.img 全称为你下载的文件名） （刷入CWM）
+
+
+
+c 相关刷机命令解释：（命令输完，回车一个，命令有空格分隔）
+moto-fastboot  -w 可以清空数据
+moto-fastboot  reboot 是重启手机
+moto-fastboot erase  分区(主要有recovery，boot，system，webtop这几个分区） 可以把刷入某个分区的东西删除掉：
+例如:
+moto-fastboot erase recovery 可以删除recovery分区（看下图）
+moto-fastboot flash 分区  相关img文件：
+
+例如：
+moto-fastboot flash recovery  recovery-xxxx.img（具体名字同你下载的文件名
+
+特别注意：moto-fastboot解锁命令 
+moto-fastboot ome unlock 可以出来一串数字，记下。
+moto-fastboot ome unlock 那串数字，这样就可解锁！
+

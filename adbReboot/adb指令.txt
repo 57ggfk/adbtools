@@ -1,0 +1,5 @@
+
+adb wait-for-device
+adb reboot bootloader
+adb reboot recovery
+adb reboot download ÍÚÃº£¨ÈıĞÇÌØÓĞ£©

@@ -1,0 +1,10 @@
+fastboot oem unlock
+fastboot oem lock
+fastboot oem get_identifier_token
+fastboot flash unlocktoken Unlock_code.bin 
+fastboot oem readcid
+fastboot oem writecid 11111111
+fastboot oem boot
+fastboot oem rebootRUU
+fastboot oem enableqxdm 0
+

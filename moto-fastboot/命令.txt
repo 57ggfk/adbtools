@@ -1,0 +1,21 @@
+打开dos命令行 输入如下命令：
+cd \   (进入C盘)
+moto-fastboot devices  （显示连接设备）
+moto-fastboot erase recovery  （清除原来官方的recovery）
+moto-fastboot flash recovery （recovery-xxxx.img 全称为你下载的文件名） （刷入CWM）
+
+
+我的运行结果如下：
+$ moto-fastboot devices 
+TA20700KXH fastboot 
+$ moto-fastboot erase recovery 
+erasing 'recovery'... OKAY [ 0.741s] 
+$ moto-fastboot flash recovery recovery.img （此处我下载附件文件名为recovery.img）
+sending 'recovery' (4780 KB)... OKAY [ 0.490s] 
+writing 'recovery'... OKAY [ 0.544s]
+
+moto-fastboot -w （wipe清楚数据）
+moto-fastboot reboot  （重启手机）
+此时手机重启中！
+
+多试试就能unlock了

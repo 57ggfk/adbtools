@@ -1,0 +1,8 @@
+fastboot devices
+fastboot erase recovery
+fastboot flash recovery recovery.img
+fastboot boot recovery.img
+
+fastboot -w
+fastboot reboot
+fastboot reboot-bootloader

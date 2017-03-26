@@ -1,0 +1,9 @@
+@prompt $G
+path "D:\Program Files\ÕÍ√¿À¢ª˙\tools";%path%
+cd /d "%~dp1"
+set file="%~nx1"
+
+
+adb push %file% /sdcard/%file%
+adb shell ls /sdcard/%file%
+PAUSE

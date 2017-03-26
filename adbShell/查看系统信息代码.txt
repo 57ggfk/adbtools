@@ -1,0 +1,7 @@
+可查看手机系统的具体命令如下：
+getprop 查看机器的全部信息参数
+getprop ro.serialno 查看机器的SN号
+getprop ro.carrier 查看机器的CID号
+getprop ro.hardware 查看机器板子代号
+getprop ro.bootloader 查看SPL（Hboot）版本号
+

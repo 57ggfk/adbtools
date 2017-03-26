@@ -1,0 +1,116 @@
+Android Debug Bridge version 1.0.26
+
+ -d                            - directs command to the only connected USB devic
+e
+                                 returns an error if more than one USB device is
+ present.
+ -e                            - directs command to the only running emulator.
+                                 returns an error if more than one emulator is r
+unning.
+ -s <serial number>            - directs command to the USB device or emulator w
+ith
+                                 the given serial number. Overrides ANDROID_SERI
+AL
+                                 environment variable.
+ -p <product name or path>     - simple product name like 'sooner', or
+                                 a relative/absolute path to a product
+                                 out directory like 'out/target/product/sooner'.
+
+                                 If -p is not specified, the ANDROID_PRODUCT_OUT
+
+                                 environment variable is used, which must
+                                 be an absolute path.
+ devices                       - list all connected devices
+ connect <host>[:<port>]       - connect to a device via TCP/IP
+                                 Port 5555 is used by default if no port number
+is specified.
+ disconnect [<host>[:<port>]]  - disconnect from a TCP/IP device.
+                                 Port 5555 is used by default if no port number
+is specified.
+                                 Using this ocmmand with no additional arguments
+
+                                 will disconnect from all connected TCP/IP devic
+es.
+
+device commands:
+  adb push <local> <remote>    - copy file/dir to device
+  adb pull <remote> [<local>]  - copy file/dir from device
+  adb sync [ <directory> ]     - copy host->device only if changed
+                                 (-l means list but don't copy)
+                                 (see 'adb help all')
+  adb shell                    - run remote shell interactively
+  adb shell <command>          - run remote shell command
+  adb emu <command>            - run emulator console command
+  adb logcat [ <filter-spec> ] - View device log
+  adb forward <local> <remote> - forward socket connections
+                                 forward specs are one of:
+                                   tcp:<port>
+                                   localabstract:<unix domain socket name>
+                                   localreserved:<unix domain socket name>
+                                   localfilesystem:<unix domain socket name>
+                                   dev:<character device name>
+                                   jdwp:<process pid> (remote only)
+  adb jdwp                     - list PIDs of processes hosting a JDWP transport
+
+  adb install [-l] [-r] [-s] <file> - push this package file to the device and i
+nstall it
+                                 ('-l' means forward-lock the app)
+                                 ('-r' means reinstall the app, keeping its data
+)
+                                 ('-s' means install on SD card instead of inter
+nal storage)
+  adb uninstall [-k] <package> - remove this app package from the device
+                                 ('-k' means keep the data and cache directories
+)
+  adb bugreport                - return all information from the device
+                                 that should be included in a bug report.
+
+  adb help                     - show this help message
+  adb version                  - show version num
+
+DATAOPTS:
+ (no option)                   - don't touch the data partition
+  -w                           - wipe the data partition
+  -d                           - flash the data partition
+
+scripting:
+  adb wait-for-device          - block until device is online
+  adb start-server             - ensure that there is a server running
+  adb kill-server              - kill the server if it is running
+  adb get-state                - prints: offline | bootloader | device
+  adb get-serialno             - prints: <serial-number>
+  adb status-window            - continuously print device status for a specifie
+d device
+  adb remount                  - remounts the /system partition on the device re
+ad-write
+  adb reboot [bootloader|recovery] - reboots the device, optionally into the boo
+tloader or recovery program
+  adb reboot-bootloader        - reboots the device into the bootloader
+  adb root                     - restarts the adbd daemon with root permissions
+  adb usb                      - restarts the adbd daemon listening on USB
+  adb tcpip <port>             - restarts the adbd daemon listening on TCP on th
+e specified port
+networking:
+  adb ppp <tty> [parameters]   - Run PPP over USB.
+ Note: you should not automatically start a PPP connection.
+ <tty> refers to the tty for PPP stream. Eg. dev:/dev/omap_csmi_tty1
+ [parameters] - Eg. defaultroute debug dump local notty usepeerdns
+
+adb sync notes: adb sync [ <directory> ]
+  <localdir> can be interpreted in several ways:
+
+  - If <directory> is not specified, both /system and /data partitions will be u
+pdated.
+
+  - If it is "system" or "data", only the corresponding partition
+    is updated.
+
+environmental variables:
+  ADB_TRACE                    - Print debug information. A comma separated list
+ of the following values
+                                 1 or all, adb, sockets, packets, rwx, usb, sync
+, sysdeps, transport, jdwp
+  ANDROID_SERIAL               - The serial number to connect to. -s takes prior
+ity over this if given.
+  ANDROID_LOG_TAGS             - When used with the logcat option, only these de
+bug tags are printed.
